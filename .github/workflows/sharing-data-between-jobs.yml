@@ -15,7 +15,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: artifact
-          path: ${{ github.workspace }}
+          path: ./README.md
   download-artifact:
     name: Download artifact from previous job
     runs-on: ubuntu-latest
@@ -26,6 +26,5 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: artifact
-          path: ${{ github.workspace }}
       - name: Files and Directories after downloading artifact
         run: ls -al

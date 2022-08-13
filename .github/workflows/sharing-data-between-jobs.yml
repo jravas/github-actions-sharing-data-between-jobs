@@ -1,0 +1,30 @@
+on: push
+
+jobs:
+  upload-artifact:
+    name: Checkout and upload artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: First job initial files and directories
+        run: ls -al
+      - name: Check out repository onto the runner
+        uses: actions/checkout@v3
+      - name: Files and Directories after checkout
+        run: ls -al
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact
+          path: ./README.md
+  download-artifact:
+    name: Download artifact from previous job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Second job initial files and directories
+        run: ls -al
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: artifact
+      - name: Files and Directories after downloading artifact
+        run: ls -al

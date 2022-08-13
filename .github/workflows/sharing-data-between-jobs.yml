@@ -17,6 +17,7 @@ jobs:
           name: artifact
           path: ./README.md
   download-artifact:
+    needs: upload-artifact
     name: Download artifact from previous job
     runs-on: ubuntu-latest
     steps:
